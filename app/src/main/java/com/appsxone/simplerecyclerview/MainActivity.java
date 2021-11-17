@@ -11,8 +11,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    RecyclerView recycler_view;
     Adapter adapter;
+    RecyclerView recycler_view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

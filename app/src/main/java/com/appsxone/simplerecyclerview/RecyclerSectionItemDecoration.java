@@ -26,7 +26,6 @@ public class RecyclerSectionItemDecoration extends RecyclerView.ItemDecoration {
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
         super.getItemOffsets(outRect, view, parent, state);
-
         int pos = parent.getChildAdapterPosition(view);
         if (sectionCallback.isSection(pos)) {
             outRect.top = headerOffset;
@@ -36,7 +35,6 @@ public class RecyclerSectionItemDecoration extends RecyclerView.ItemDecoration {
     @Override
     public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state) {
         super.onDrawOver(c, parent, state);
-
         if (headerView == null) {
             headerView = inflateHeaderView(parent);
             header = (TextView) headerView.findViewById(R.id.tv_header);
@@ -69,15 +67,12 @@ public class RecyclerSectionItemDecoration extends RecyclerView.ItemDecoration {
     }
 
     private View inflateHeaderView(RecyclerView parent) {
-        return LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.view_header, parent, false);
+        return LayoutInflater.from(parent.getContext()).inflate(R.layout.view_header, parent, false);
     }
 
     private void fixLayoutSize(View view, ViewGroup parent) {
-        int widthSpec = View.MeasureSpec.makeMeasureSpec(parent.getWidth(),
-                View.MeasureSpec.EXACTLY);
-        int heightSpec = View.MeasureSpec.makeMeasureSpec(parent.getHeight(),
-                View.MeasureSpec.UNSPECIFIED);
+        int widthSpec = View.MeasureSpec.makeMeasureSpec(parent.getWidth(), View.MeasureSpec.EXACTLY);
+        int heightSpec = View.MeasureSpec.makeMeasureSpec(parent.getHeight(), View.MeasureSpec.UNSPECIFIED);
 
         int childWidth = ViewGroup.getChildMeasureSpec(widthSpec,
                 parent.getPaddingLeft() + parent.getPaddingRight(),
@@ -87,12 +82,10 @@ public class RecyclerSectionItemDecoration extends RecyclerView.ItemDecoration {
                 view.getLayoutParams().height);
 
         view.measure(childWidth, childHeight);
-
         view.layout(0, 0, view.getMeasuredWidth(), view.getMeasuredHeight());
     }
 
     public interface SectionCallback {
-
         boolean isSection(int position);
 
         CharSequence getSectionHeader(int position);
